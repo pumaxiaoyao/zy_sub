@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workerman</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script>
+
+    {
+        ws = new WebSocket("ws://lty-main.com:8282");
+
+        ws.onopen = function () {
+            ws.send('{"type":"login","msg":"登录后拿到的token"}');
+        };
+
+        ws.onmessage = function (e) {
+            let msg = e.data;
+            let obj = JSON.parse(msg);
+            switch (obj.type) {
+                case 'ping':
+                    ws.send('{"type":"pong"}');
+                    break;
+                case 'client':
+                    console.log('将这个client_id: ' + obj.msg + ' 上传到指定接口进行绑定');
+                    break;
+                case 'orders':
+                    console.table(obj.msg);
+                    test(obj.msg);
+                    break;
+                default:
+                    console.log(obj.msg);
+            }
+        };
+
+        ws.onclose = function () {
+            console.log('link closed ...');
+        };
+
+        ws.onerror = function (e) {
+            console.log(e.data);
+        }
+    }
+
+    function test(orders) {
+        let p_str = '';
+        for (let i = 0; i < orders.length; i++) {
+            p_str += '<p>' + orders[i].create_time + ' ' + orders[i].nickname + ' 在 ' + orders[i].lty_name + ' '
+                + orders[i].mark_a + ' ' + orders[i].mark_b + ' 下注了 ' + orders[i].money + ' 元。</p>';
+        }
+        let app = document.getElementById('app');
+        app.innerHTML = p_str;
+    }
+
+</script>
+</html>

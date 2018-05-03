@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开奖专用页</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="msg" style="text-align: center"></div><hr>
+    <div class="cqssc" style="text-align: center"></div><hr>
+    <div class="bjpk10" style="text-align: center"></div><hr>
+    <div class="bjkl8" style="text-align: center"></div><hr>
+    <div class="cakeno" style="text-align: center"></div>
+</body>
+<script>
+$(function () {
+
+    setInterval(function() {
+        $.ajax({
+            url: "collectLty",
+            type: "get",
+            dataType: "json",
+            success: function (res) {
+                for (var i = 0; i < res.length; i++) {
+                    var pStr = ''
+                    if (res[i] !== false) {
+                        pStr += '<h1>' + res[i].time + res[i].msg0 + res[i].msg + '</h1>'
+                        $(".msg").html(pStr)
+                        $("."+res[i].type).html(pStr)
+                    }
+                }
+            }
+        });
+    },5000)
+});
+</script>
+</html>

@@ -1,0 +1,41 @@
+<?php
+//配置文件
+return [
+    'pk10_type'      => [
+        'ball_1_digit'  => '冠军',
+        'ball_2_digit'  => '亚军',
+        'ball_3_digit'  => '第三名',
+        'ball_4_digit'  => '第四名',
+        'ball_5_digit'  => '第五名',
+        'ball_6_digit'  => '第六名',
+        'ball_7_digit'  => '第七名',
+        'ball_8_digit'  => '第八名',
+        'ball_9_digit'  => '第九名',
+        'ball_10_digit' => '第十名',
+        'ball_1_half'   => '冠军',
+        'ball_2_half'   => '亚军',
+        'ball_3_half'   => '第三名',
+        'ball_4_half'   => '第四名',
+        'ball_5_half'   => '第五名',
+        'ball_6_half'   => '第六名',
+        'ball_7_half'   => '第七名',
+        'ball_8_half'   => '第八名',
+        'ball_9_half'   => '第九名',
+        'ball_10_half'  => '第十名',
+        'sum_digit'     => '冠亚军和',
+        'sum_half'      => '冠亚军和',
+    ],
+    'pk10_open_type' => [
+        'ball_1'  => '冠军',
+        'ball_2'  => '亚军',
+        'ball_3'  => '第三名',
+        'ball_4'  => '第四名',
+        'ball_5'  => '第五名',
+        'ball_6'  => '第六名',
+        'ball_7'  => '第七名',
+        'ball_8'  => '第八名',
+        'ball_9'  => '第九名',
+        'ball_10' => '第十名',
+        'sum'     => '冠亚军和',
+    ]
+];
